@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة معدل التخصيص - كلية الحاسبات</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Tajawal', sans-serif; }
+        
+        .input-focus:focus {
+            border-width: 2px;
+            border-color: #138000;
+            outline: none;
+            /* border-color: transparent; */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 flex flex-col min-h-screen">
+
+    <main class="flex-grow container mx-auto px-4 py-8 flex flex-col justify-center items-center">
+        
+        <div class="w-full max-w-lg bg-gray-800 rounded-xl shadow-2xl overflow-hidden border border-gray-700">
+            
+            <div class="bg-green-900 p-6 text-center border-b border-gray-700">
+                <h1 class="text-xl md:text-2xl font-bold text-white leading-relaxed">
+                    حاسبة معدل التخصيص 
+                </h1>
+                <p class="text-gray-300 mt-2 text-sm md:text-base">
+لكلية الحاسبات وتقنية المعلومات بجامعة الملك عبدالعزيز                  
+                </p>
+            </div>
+
+            <div class="p-6 space-y-4">
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-400 mb-1">مقدمة حوسبة (CPIT-201)</label>
+                    <input type="number" id="cpit201" placeholder="أدخل الدرجة (مثلاً: 95)" 
+                           class="w-full bg-gray-700 text-white p-3 rounded-lg border border-gray-600 input-focus transition duration-200 placeholder-gray-500">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-400 mb-1">برمجة ١ (CPCS-202)</label>
+                    <input type="number" id="cpcs202" placeholder="أدخل الدرجة" 
+                           class="w-full bg-gray-700 text-white p-3 rounded-lg border border-gray-600 input-focus transition duration-200 placeholder-gray-500">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-400 mb-1">نظرية الاحتمالات (STAT-210)</label>
+                    <input type="number" id="stat210" placeholder="أدخل الدرجة" 
+                           class="w-full bg-gray-700 text-white p-3 rounded-lg border border-gray-600 input-focus transition duration-200 placeholder-gray-500">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-400 mb-1">أساليب الكتابة العلمية (CPIT-221)</label>
+                    <input type="number" id="cpit221" placeholder="أدخل الدرجة" 
+                           class="w-full bg-gray-700 text-white p-3 rounded-lg border border-gray-600 input-focus transition duration-200 placeholder-gray-500">
+                </div>
+
+                <button onclick="calculateGPA()" 
+                        class="w-full mt-4 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg shadow transition duration-300 transform hover:scale-[1.02]">
+                    حساب المعدل
+                </button>
+
+                <div id="resultArea" class="hidden mt-6 p-4 bg-gray-700 rounded-lg text-center border border-gray-600">
+                    <p class="text-gray-300 text-sm">معدل التخصيص هو:</p>
+                    <p id="finalScore" class="text-3xl font-bold text-green-400 mt-1">0.00</p>
+                </div>
+                
+                <div id="errorMsg" class="hidden mt-4 text-red-400 text-center text-sm font-medium">
+                    الرجاء التأكد من إدخال جميع الدرجات بشكل صحيح.
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full bg-gray-900 py-6 text-center border-t border-gray-800 mt-auto">
+        <p class="text-gray-500 text-sm font-medium tracking-wide">من طالب إلى الطلاب</p>
+    </footer>
+
+    <script src="./script.js"> </script>
+</body>
+</html>
