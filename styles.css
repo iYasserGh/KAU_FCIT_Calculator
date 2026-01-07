@@ -1,0 +1,8 @@
+body { font-family: 'Tajawal', sans-serif; }
+
+.input-focus:focus {
+    border-width: 2px;
+    border-color: #138000;
+    outline: none;
+    /* border-color: transparent; */
+}
