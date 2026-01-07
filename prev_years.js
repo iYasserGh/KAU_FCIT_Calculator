@@ -6,7 +6,7 @@ function loadPrevGrades() {
     CS_table.querySelector('tbody').innerHTML = '';
     IT_table.querySelector('tbody').innerHTML = '';
     IS_table.querySelector('tbody').innerHTML = '';
-    
+
     for (let raw of prev_grades['CS']) {
         let row = document.createElement('tr');
         row.classList.add('border-t', 'border-neutral-700', 'hover:bg-neutral-800', 'transition-colors', 'duration-200');
@@ -42,7 +42,8 @@ function loadLastGPA() {
     const lastGPAData = localStorage.getItem('lastGPAResult');
     if (lastGPAData) {
         const data = JSON.parse(lastGPAData);
-        console.log(data);
+        let nowTimestamp = new Date().toISOString();
+        if ((new Date(nowTimestamp) - new Date(data.timestamp)) > 30 * 60 * 1000) return; // older than 30 minutes
         document.getElementById("userWeightedDegree").innerText = data.finalGPA;
         document.getElementById("userDegreeComparison").classList.remove('hidden');
     }
