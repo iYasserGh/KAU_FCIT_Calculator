@@ -1,0 +1,32 @@
+{
+    "CS":[
+        {"year":"21", "male":"4.58", "female":"4.67"},
+        {"year":"21.5", "male":null, "female":"4.60"},
+        {"year":"22", "male":"88.89", "female":"89"},
+        {"year":"22.5", "male":null, "female":"أعلى من 87"},
+        {"year":"23", "male":"90", "female":"94.81"},
+        {"year":"23.5", "male":"90", "female":"97.50"},
+        {"year":"24", "male":"90.24", "female":"93.82"},
+        {"year":"24.5", "male":"90.68", "female":null}
+    ],
+    "IT":[
+        {"year":"21", "male":"4.37", "female":"4.44"},
+        {"year":"21.5", "male":null, "female":"4.45"},
+        {"year":"22", "male":"85", "female":"88"},
+        {"year":"22.5", "male":null, "female":"87 تقريباً"},
+        {"year":"23", "male":"83", "female":"91"},
+        {"year":"23.5", "male":"83", "female":"92.70"},
+        {"year":"24", "male":"83.2", "female":"88"},
+        {"year":"24.5", "male":"82", "female":null}
+    ],
+    "IS":[
+        {"year":"21", "male":"أقل من 4.36", "female":"أقل من 4.44"},
+        {"year":"21.5", "male":null, "female":"أقل من 4.45"},
+        {"year":"22", "male":"73.6", "female":"أقل من 88"},
+        {"year":"22.5", "male":null, "female":"أقل من 87"},
+        {"year":"23", "male":"أقل من 83", "female":"أقل من 91"},
+        {"year":"23.5", "male":"أقل من 83", "female":"72.18"},
+        {"year":"24", "male":"71.18", "female":"أقل من 88"},
+        {"year":"24.5","male":"73", "female":null}
+    ]
+}
