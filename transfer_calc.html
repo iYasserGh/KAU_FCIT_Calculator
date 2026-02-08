@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>حاسبة معدل التخصيص - كلية الحاسبات</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/statics/css/styles.css">
 </head>
-<body class="bg-neutral-950 text-neutral-100 flex flex-col min-h-screen font-[300]">
+<body class="bg-neutral-950 text-neutral-100 flex flex-col min-h-screen">
 
     <main class="flex-grow container mx-auto px-4 py-8 flex flex-col justify-center items-center">
         
         <div class="w-full max-w-lg bg-neutral-900 rounded-xl shadow-2xl overflow-hidden border border-neutral-800">
             
-            <div class="p-6 text-center">
-                <h1 class="text-lg md:text-2xl font-bold text-green-400 leading-relaxed mb-2">
-                    حاسبة معدل التخصيص 
+            <div class="bg-green-900 p-6 text-center">
+                <h1 class="text-lg md:text-2xl font-bold text-white leading-relaxed">
+                    حاسبة معدل التحويل بين التخصصات 
                 </h1>
-                <h2 class="text-neutral-300 md:text-base font-[200]">
+                <h2 class="text-neutral-300 md:text-base">
 لكلية الحاسبات وتقنية المعلومات بجامعة الملك عبدالعزيز                  
                 </h2>
             </div>
@@ -26,47 +26,53 @@
             <div class="p-6 space-y-4">
                 
                 <div>
-                    <label class="block text-sm font-[400] text-neutral-400 mb-2">مقدمة حوسبة (CPIT-201)</label>
-                    <input type="text" id="cpit201" placeholder="أدخل الدرجة (مثلاً: 95)" 
+                    <label class="block text-sm font-medium text-green-400 mb-1">برمجة 2 (CPCS-203)</label>
+                    <input type="text" id="cpcs203" placeholder="أدخل الدرجة (مثلاً: 95)" 
+                           class="w-full bg-neutral-700 text-white p-3 rounded-lg border border-green-600 input-focus transition duration-200 placeholder-neutral-500">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-neutral-400 mb-1">مقدمة حوسبة (CPIT-201)</label>
+                    <input type="text" id="cpit201" placeholder="أدخل الدرجة" 
                            class="w-full bg-neutral-700 text-white p-3 rounded-lg border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500">
                 </div>
 
                 <div>
-                    <label class="block text-sm font-[400] text-neutral-400 mb-2">برمجة ١ (CPCS-202)</label>
+                    <label class="block text-sm font-medium text-neutral-400 mb-1">برمجة ١ (CPCS-202)</label>
                     <input type="text" id="cpcs202" placeholder="أدخل الدرجة" 
                            class="w-full bg-neutral-700 text-white p-3 rounded-lg border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500">
                 </div>
 
                 <div>
-                    <label class="block text-sm font-[400] text-neutral-400 mb-2">نظرية الاحتمالات (STAT-210)</label>
+                    <label class="block text-sm font-medium text-neutral-400 mb-1">نظرية الاحتمالات (STAT-210)</label>
                     <input type="text" id="stat210" placeholder="أدخل الدرجة" 
                            class="w-full bg-neutral-700 text-white p-3 rounded-lg border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500">
                 </div>
 
                 <div>
-                    <label class="block text-sm font-[400] text-neutral-400 mb-2">أساليب الكتابة العلمية (CPIT-221)</label>
+                    <label class="block text-sm font-medium text-neutral-400 mb-1">أساليب الكتابة العلمية (CPIT-221)</label>
                     <input type="text" id="cpit221" placeholder="أدخل الدرجة" 
                            class="w-full bg-neutral-700 text-white p-3 rounded-lg border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500">
                 </div>
 
-                <button onclick="calculateMajor()" 
-                        class="w-full mt-4 bg-green-400 hover:bg-green-500 text-neutral-950 font-[600] py-3 px-4 rounded-lg shadow transition duration-300 transform hover:scale-[1.02]">
+                <button onclick="calculateTransferMajor()" 
+                        class="w-full mt-4 bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-4 rounded-lg shadow transition duration-300 transform hover:scale-[1.02]">
                     حساب المعدل
                 </button>
 
                 <div id="resultArea" class="hidden mt-6 p-4 bg-neutral-800 rounded-lg text-center border border-neutral-600">
                     <p class="text-neutral-300 text-sm">معدل التخصيص هو:</p>
-                    <p id="finalScore" class="text-3xl font-[600] text-green-400 mt-1">0.00</p>
+                    <p id="finalScore" class="text-3xl font-bold text-green-500 mt-1">0.00</p>
                     <p class="text-neutral-400 text-sm">ما كتبه الله لك هو خيرٌ لك دائماً</p>
                 </div>
                 
-                <div id="errorMsg" class="hidden mt-4 text-red-400 text-center text-sm font-[400]">
+                <div id="errorMsg" class="hidden mt-4 text-red-400 text-center text-sm font-medium">
                     الرجاء التأكد من إدخال جميع الدرجات بشكل صحيح.
                 </div>
 
             </div>
             <div class="p-6 pt-0 text-center">
-                <a href="/prev_years.html" class="text-green-400 hover:text-green-300 transition duration-300 font-[400]">
+                <a href="/prev_years" class="text-green-400 hover:text-green-300 transition duration-300 font-medium">
                     عرض نسب التخصصات للدفعات السابقة
                 </a>
             </div>
