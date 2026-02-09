@@ -10,6 +10,6 @@ function loadComponent(url, elementId) {
 }
 
 // Load the navbar component into the element with id "navbar"
-window.onload = function() {
+window.addEventListener('load', function() {
     loadComponent('/components/navbar.html', 'navbar');
-}
+});

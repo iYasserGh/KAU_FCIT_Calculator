@@ -117,7 +117,7 @@ function loadMajorsCanJoin(canJoin){
 
 let degree = getLastGPA();
 
-window.onload = async function() {
+window.addEventListener('load', async function() {
     await fetch('/data/prev_years_data.json')
     .then(response => response.json())
     .then(data => {
@@ -135,4 +135,4 @@ window.onload = async function() {
     loadLastGPA();
     
 
-}
+});
