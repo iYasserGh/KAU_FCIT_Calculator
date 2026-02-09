@@ -22,11 +22,11 @@ function convertArabicToEnglish(str) {
 
 function saveGradesToLocalStorage(cpit201 = null, cpcs202 = null, stat210 = null, cpit221 = null, cpcs203 = null) {
     const gradesData = {
-        cpit201: cpit201,
-        cpcs202: cpcs202,
-        stat210: stat210,
-        cpit221: cpit221,
-        cpcs203: cpcs203,
+        cpit201: cpit201 !== null ? cpit201 : '',
+        cpcs202: cpcs202 !== null ? cpcs202 : '',
+        stat210: stat210 !== null ? stat210 : '',
+        cpit221: cpit221 !== null ? cpit221 : '',
+        cpcs203: cpcs203 !== null ? cpcs203 : '',
         timestamp: new Date().toISOString()
     };
     localStorage.setItem('lastGrades', JSON.stringify(gradesData));
@@ -71,26 +71,27 @@ function calculateMajor() {
     document.getElementById('finalScore').innerText = finalGPA.toFixed(2);
     resultArea.classList.remove('hidden');
     // Save to localStorage
-    const resultsData = {
-        cpit201: val_cpit201,
-        cpcs202: val_cpcs202,
-        stat210: val_stat210,
-        cpit221: val_cpit221,
-        finalGPA: finalGPA.toFixed(2),
-        timestamp: new Date().toISOString()
-    };
-    localStorage.setItem('lastGPAResult', JSON.stringify(resultsData));
+    // const resultsData = {
+    //     cpit201: val_cpit201,
+    //     cpcs202: val_cpcs202,
+    //     stat210: val_stat210,
+    //     cpit221: val_cpit221,
+    //     finalGPA: finalGPA.toFixed(2),
+    //     timestamp: new Date().toISOString()
+    // };
+    saveGradesToLocalStorage(val_cpit201, val_cpcs202, val_stat210, val_cpit221);
+    // localStorage.setItem('lastGrades', JSON.stringify(resultsData));
 }
 
 window.onload = function() {
     // Load last result from localStorage
-    const lastResult = localStorage.getItem('lastGPAResult');
+    const lastResult = localStorage.getItem('lastGrades');
     if (lastResult) {
         const data = JSON.parse(lastResult);
-        document.getElementById('cpit201').value = data.cpit201;
-        document.getElementById('cpcs202').value = data.cpcs202;
-        document.getElementById('stat210').value = data.stat210;
-        document.getElementById('cpit221').value = data.cpit221;
+        document.getElementById('cpit201').value = data.cpit201 || '';
+        document.getElementById('cpcs202').value = data.cpcs202 || '';
+        document.getElementById('stat210').value = data.stat210 || '';
+        document.getElementById('cpit221').value = data.cpit221 || '';
         document.getElementById('cpcs203').value = data.cpcs203 || '';
     }
 }
