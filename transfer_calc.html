@@ -10,47 +10,9 @@
 </head>
 <body class="bg-neutral-950 text-neutral-100 flex flex-col min-h-screen font-[300]">
     
-    <nav id="navList" class="w-full bg-neutral-950 hidden md:flex items-center justify-center border-b border-neutral-800">
-        <div class="container mx-auto px-4 py-4">
-            <ul class="flex flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0">
-                <li>
-                    <a href="/transfer_calc.html" class="block px-4 py-2 text-neutral-300 hover:text-green-400 hover:bg-neutral-800 rounded transition duration-200">
-                        حاسبة المعدل التراكمي
-                    </a>
-                </li>
-                <li>
-                    <button onclick="toggleSubMenu(this)" class="w-full text-right block px-4 py-2 text-neutral-300 hover:text-green-400 hover:bg-neutral-800 rounded transition duration-200 flex items-center justify-between">
-                        <span>حاسبة كلية الحاسبات وتقنية المعلومات</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    <ul class="mr-4 mt-2 space-y-1 hidden">
-                        <li>
-                            <a href="/index.html" class="block px-4 py-2 text-sm text-neutral-400 hover:text-green-400 hover:bg-neutral-800 rounded transition duration-200">
-                                حاسبة معدل التخصيص
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/transfer_calc.html" class="block px-4 py-2 text-sm text-green-400 bg-neutral-800 rounded">
-                                حاسبة معدل التحويل بين التخصصات
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="/prev_years.html" class="block px-4 py-2 text-neutral-300 hover:text-green-400 hover:bg-neutral-800 rounded transition duration-200">
-                        نسب التخصصات السابقة
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <button class="md:hidden p-3 bg-neutral-900 text-neutral-100 focus:outline-none w-12" id="mobileMenuButton" onclick="toggleNavList(this)">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-        </svg>
-    </button>
+    <div id="navbar">
+        <!-- Navbar will be loaded here -->
+    </div>
 
     <main class="flex-grow container mx-auto px-4 py-8 flex flex-col justify-center items-center">
         
@@ -128,5 +90,6 @@
 
     <script src="/statics/js/script.js"></script>
     <script src="/statics/js/navlist.js"></script>
+    <script src="/statics/js/loader.js"></script>
 </body>
 </html>
