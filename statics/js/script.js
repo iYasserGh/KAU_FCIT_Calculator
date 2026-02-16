@@ -92,7 +92,10 @@ window.onload = function() {
         document.getElementById('cpcs202').value = data.cpcs202 || '';
         document.getElementById('stat210').value = data.stat210 || '';
         document.getElementById('cpit221').value = data.cpit221 || '';
-        document.getElementById('cpcs203').value = data.cpcs203 || '';
+        const cpcs203 = document.getElementById('cpcs203')
+        if (cpcs203) {
+            cpcs203.value = data.cpcs203 || '';
+        }
     }
 }
 
