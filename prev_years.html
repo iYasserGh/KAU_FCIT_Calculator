@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نسب التخصصات للأعوام السابقة - كلية الحاسبات</title>
+    <title>حاسبة معدل التخصيص - كلية الحاسبات</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/statics/css/styles.css">
 </head>
-<body class="bg-neutral-950 text-neutral-100 flex flex-col min-h-screen">
+<body class="bg-neutral-950 text-neutral-100 flex flex-col min-h-screen font-[300]">
+    <div id="navbar">
+        <!-- Navbar will be loaded here -->
+    </div>
 
-    <main class="flex-grow container mx-auto px-4 py-8">
+    <main class="flex-grow container mx-auto px-4 py-8 flex flex-col justify-center items-center">
         
-        <div class="w-full max-w-4xl mx-auto bg-neutral-900 rounded-xl shadow-2xl overflow-hidden border border-neutral-800">
+        <div class="w-full max-w-lg bg-neutral-900 rounded shadow-2xl overflow-hidden border border-neutral-800">
             
-            <div class="bg-green-900 p-6 text-center">
-                <h1 class="text-lg md:text-2xl font-bold text-white leading-relaxed">
+            <div class="p-6 text-center">
+                <h1 class="text-lg md:text-2xl font-bold text-green-400 leading-relaxed mb-2">
                     نسب التخصصات للدفعات السابقة
                 </h1>
                 <h2 class="text-neutral-300 md:text-base">
@@ -40,13 +43,13 @@
             
             <!-- <div class="bg-neutral-800  border-t border-neutral-700"> -->
                 <div class="m-0 px-6 py-4">
-                    <div class="block items-center justify-between bg-neutral-800 p-4 rounded-lg border border-green-500">
+                    <div class="block items-center justify-between bg-neutral-800 p-4 rounded border border-green-400">
                         <div id="canJoinMajors" class="hidden">
                             <p class="text-neutral-300 text-sm mb-1">
                                 حسب اخر معدل تم حسابه، يتوقع قبولك في التخصصات التالية اذا كنت طالباً: 
-                                <span id="maleMajors" class="font-semibold text-green-500"></span>.
+                                <span id="maleMajors" class="font-semibold text-green-400"></span>.
                                 في حال كنتي طالبة يتوقع قبولك في التخصصات التالية: 
-                                <span id="femaleMajors" class="font-semibold text-green-500"></span>.
+                                <span id="femaleMajors" class="font-semibold text-green-400"></span>.
                             </p>
 
                             <p class="text-neutral-300 text-sm mb-4 font-bold">تذكر أن هذه مجرد توقعات تحتمل الخطأ، وان دائماً ما كتبه الله لك هو خيرٌ لك.</p>
@@ -54,7 +57,7 @@
                         <div id="userDegreeComparison" class="hidden">
                             <div class="flex items-center gap-1">
                                 <span class="text-neutral-300 font-medium">اخر معدل تم حسابه:</span>
-                                <span id="userWeightedDegree" class="text-xl font-bold text-green-500">0.00</span>
+                                <span id="userWeightedDegree" class="text-xl font-bold text-green-400">0.00</span>
                             </div>
                         </div>
                         <div id="calcGPA">
@@ -78,7 +81,7 @@
                 <!-- CS Section -->
                 <div>
                     <h3 class="text-lg font-bold mb-4">قسم علوم الحاسبات (CS)</h3>
-                    <div class="overflow-x-auto rounded-lg border border-neutral-700">
+                    <div class="overflow-x-auto rounded border border-neutral-700">
                         <table class="w-full text-center text-sm md:text-base" id="CS_prev_years_table">
                             <thead class="bg-neutral-800 text-neutral-300">
                                 <tr>
@@ -98,7 +101,7 @@
                 <!-- IT Section -->
                 <div>
                     <h3 class="text-lg font-bold mb-4">قسم تقنية المعلومات (IT)</h3>
-                    <div class="overflow-x-auto rounded-lg border border-neutral-700">
+                    <div class="overflow-x-auto rounded border border-neutral-700">
                         <table class="w-full text-center text-sm md:text-base" id="IT_prev_years_table">
                             <thead class="bg-neutral-800 text-neutral-300">
                                 <tr>
@@ -118,7 +121,7 @@
                 <!-- IS Section -->
                 <div>
                     <h3 class="text-lg font-bold mb-4">قسم نظم المعلومات (IS)</h3>
-                    <div class="overflow-x-auto rounded-lg border border-neutral-700">
+                    <div class="overflow-x-auto rounded border border-neutral-700">
                         <table class="w-full text-center text-sm md:text-base" id="IS_prev_years_table">
                             <thead class="bg-neutral-800 text-neutral-300">
                                 <tr>
@@ -152,6 +155,8 @@
     </footer>
 
     <script src="/statics/js/prev_years.js"></script>
+    <script src="/statics/js/loader.js"></script>
+    <script src="/statics/js/navlist.js"></script>
 
 </body>
 </html>

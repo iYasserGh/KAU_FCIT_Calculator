@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="/statics/css/styles.css">
 </head>
 <body class="bg-neutral-950 text-neutral-100 flex flex-col min-h-screen font-[300]">
+    
     <div id="navbar">
         <!-- Navbar will be loaded here -->
     </div>
-
 
     <main class="flex-grow container mx-auto px-4 py-8 flex flex-col justify-center items-center">
         
@@ -20,7 +20,7 @@
             
             <div class="p-6 text-center">
                 <h1 class="text-lg md:text-2xl font-bold text-green-400 leading-relaxed mb-2">
-                    حاسبة معدل التخصيص 
+                    حاسبة معدل التحويل بين التخصصات 
                 </h1>
                 <h2 class="text-neutral-300 md:text-base">
 لكلية الحاسبات وتقنية المعلومات بجامعة الملك عبدالعزيز                  
@@ -31,35 +31,41 @@
                 
                 <div>
                     <label class="block text-sm font-[400] text-neutral-400 mb-2">مقدمة حوسبة (CPIT-201)</label>
-                    <input type="text" id="cpit201" placeholder="أدخل الدرجة (مثلاً: 95)" 
-                           class="w-full bg-neutral-700 text-white p-3 rounded border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500 focus:border-neutral-400">
+                    <input type="text" id="cpit201" placeholder="أدخل الدرجة (مثلاً: 95)"
+                           class="w-full bg-neutral-700 text-white p-3 rounded border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500 focus:border-neutral-400" required>
                 </div>
 
                 <div>
                     <label class="block text-sm font-[400] text-neutral-400 mb-2">برمجة ١ (CPCS-202)</label>
                     <input type="text" id="cpcs202" placeholder="أدخل الدرجة" 
-                           class="w-full bg-neutral-700 text-white p-3 rounded border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500 focus:border-neutral-400">
+                           class="w-full bg-neutral-700 text-white p-3 rounded border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500 focus:border-neutral-400" required>
                 </div>
 
                 <div>
                     <label class="block text-sm font-[400] text-neutral-400 mb-2">نظرية الاحتمالات (STAT-210)</label>
                     <input type="text" id="stat210" placeholder="أدخل الدرجة" 
-                           class="w-full bg-neutral-700 text-white p-3 rounded border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500 focus:border-neutral-400">
+                           class="w-full bg-neutral-700 text-white p-3 rounded border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500 focus:border-neutral-400" required>
                 </div>
 
                 <div>
                     <label class="block text-sm font-[400] text-neutral-400 mb-2">أساليب الكتابة العلمية (CPIT-221)</label>
                     <input type="text" id="cpit221" placeholder="أدخل الدرجة" 
-                           class="w-full bg-neutral-700 text-white p-3 rounded border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500 focus:border-neutral-400">
+                           class="w-full bg-neutral-700 text-white p-3 rounded border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500 focus:border-neutral-400" required>
                 </div>
 
-                <button onclick="calculateMajor()" 
-                        class="w-full mt-4 bg-green-400 hover:bg-green-500 text-neutral-950 font-[600] py-3 px-4 rounded shadow transition duration-300 transform"> <!-- hover:scale-[1.02] -->
+                <div>
+                    <label class="block text-sm font-medium text-neutral-400 mb-1">برمجة 2 (CPCS-203)</label>
+                    <input type="text" id="cpcs203" placeholder="أدخل الدرجة" 
+                           class="w-full bg-neutral-700 text-white p-3 rounded border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500 focus:border-green-400" required>
+                </div>
+
+                <button onclick="calculateTransferMajor()" 
+                        class="w-full mt-4 bg-green-400 hover:bg-green-500 text-neutral-950 font-[600] py-3 px-4 rounded shadow transition duration-300 transform"> <!-- hover:syyxycale-[1.02] -->
                     حساب المعدل
                 </button>
 
                 <div id="resultArea" class="hidden mt-6 p-4 bg-neutral-800 rounded text-center border border-neutral-600">
-                    <p class="text-neutral-300 text-sm">معدل التخصيص هو:</p>
+                    <p class="text-neutral-300 text-sm">معدل التحويل هو:</p>
                     <p id="finalScore" class="text-3xl font-[600] text-green-400 mt-1">0.00</p>
                     <p class="text-neutral-400 text-sm">ما كتبه الله لك هو خيرٌ لك دائماً</p>
                 </div>
@@ -69,20 +75,21 @@
                 </div>
 
             </div>
-            <div class="p-6 pt-0 text-center">
+            <!-- <div class="p-6 pt-0 text-center">
                 <a href="/prev_years.html" class="text-green-400 hover:text-green-300 transition duration-300 font-[400]">
                     عرض نسب التخصصات للدفعات السابقة
                 </a>
-            </div>
+            </div> -->
         </div>
     </main>
+    
 
     <footer class="w-full bg-neutral-950 py-6 text-center border-t border-neutral-800 mt-auto">
         <p class="text-neutral-500 text-sm font-medium tracking-wide">للملاحظات والاقتراحات يرجى التواصل على <a href="https://x.com/iYasserGh" class="text-neutral-300 underline">منصة اكس</a><br>لا تنسانا من صالح دعاك</p>
     </footer>
 
     <script src="/statics/js/script.js"></script>
-    <script src="/statics/js/loader.js"></script>
     <script src="/statics/js/navlist.js"></script>
+    <script src="/statics/js/loader.js"></script>
 </body>
 </html>

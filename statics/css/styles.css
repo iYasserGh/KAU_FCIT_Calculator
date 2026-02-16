@@ -1,8 +1,8 @@
-body { font-family: 'Tajawal', sans-serif; }
+body { font-family: 'Alexandria', sans-serif; }
 
 .input-focus:focus {
-    border-width: 2px;
-    border-color: #138000;
+    border-width: 1px;
+    /* border-color: #4ade80; Tailwind's green-400 */
     outline: none;
     /* border-color: transparent; */
 }
