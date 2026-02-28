@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حاسبة معدل التخصيص - كلية الحاسبات</title>
+    <title>حاسبة المعدل التراكمي - كلية الحاسبات</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/statics/css/styles.css">
@@ -29,38 +29,39 @@
 
             <div class="p-6 space-y-4">
                 
-                <div>
-                    <label class="block text-sm font-[400] text-neutral-400 mb-2">مقدمة حوسبة (CPIT-201)</label>
-                    <input type="text" id="cpit201" placeholder="أدخل الدرجة (مثلاً: 95)" 
-                           class="w-full bg-neutral-700 text-white p-3 rounded border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500 focus:border-neutral-400">
+                <!-- Search Section -->
+                <div class="relative">
+                    <label class="block text-sm font-[400] text-neutral-400 mb-2">البحث عن مادة</label>
+                    <input type="text" id="subjectSearch" placeholder="ابحث باسم المادة أو الرمز (مثال: CPCS-202)" 
+                           class="w-full bg-neutral-700 text-white p-3 rounded border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500 focus:border-neutral-400"
+                           autocomplete="off">
+                    
+                    <!-- Search Results Dropdown -->
+                    <div id="searchResults" class="hidden absolute z-10 w-full mt-1 bg-neutral-800 border border-neutral-600 rounded shadow-lg max-h-60 overflow-y-auto">
+                        <!-- Results will be populated here -->
+                    </div>
                 </div>
 
-                <div>
-                    <label class="block text-sm font-[400] text-neutral-400 mb-2">برمجة ١ (CPCS-202)</label>
-                    <input type="text" id="cpcs202" placeholder="أدخل الدرجة" 
-                           class="w-full bg-neutral-700 text-white p-3 rounded border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500 focus:border-neutral-400">
+                <!-- Selected Subjects List -->
+                <div id="selectedSubjects" class="space-y-3">
+                    <!-- Selected subjects with grade inputs will appear here -->
                 </div>
 
-                <div>
-                    <label class="block text-sm font-[400] text-neutral-400 mb-2">نظرية الاحتمالات (STAT-210)</label>
-                    <input type="text" id="stat210" placeholder="أدخل الدرجة" 
-                           class="w-full bg-neutral-700 text-white p-3 rounded border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500 focus:border-neutral-400">
+                <!-- Empty State Message -->
+                <div id="emptyState" class="text-center py-6 text-neutral-500">
+                    <p>لم تقم بإضافة أي مادة بعد</p>
+                    <p class="text-sm mt-1">ابحث عن مادة وأضفها لحساب معدلك</p>
                 </div>
 
-                <div>
-                    <label class="block text-sm font-[400] text-neutral-400 mb-2">أساليب الكتابة العلمية (CPIT-221)</label>
-                    <input type="text" id="cpit221" placeholder="أدخل الدرجة" 
-                           class="w-full bg-neutral-700 text-white p-3 rounded border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500 focus:border-neutral-400">
-                </div>
-
-                <button onclick="calculateMajor()" 
-                        class="w-full mt-4 bg-green-400 hover:bg-green-500 text-neutral-950 font-[600] py-3 px-4 rounded shadow transition duration-300 transform"> <!-- hover:scale-[1.02] -->
-                    حساب المعدل
+                <button onclick="calculateGPA()" id="calcBtn"
+                        class="w-full mt-4 bg-green-400 hover:bg-green-500 text-neutral-950 font-[600] py-3 px-4 rounded shadow transition duration-300 transform disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    حساب المعدل التراكمي
                 </button>
 
                 <div id="resultArea" class="hidden mt-6 p-4 bg-neutral-800 rounded text-center border border-neutral-600">
-                    <p class="text-neutral-300 text-sm">معدل التخصيص هو:</p>
+                    <p class="text-neutral-300 text-sm">معدلك التراكمي هو:</p>
                     <p id="finalScore" class="text-3xl font-[600] text-green-400 mt-1">0.00</p>
+                    <p id="totalCredits" class="text-neutral-400 text-sm mt-2"></p>
                     <p class="text-neutral-400 text-sm">ما كتبه الله لك هو خيرٌ لك دائماً</p>
                 </div>
                 
@@ -79,5 +80,6 @@
     <script src="/statics/js/script.js"></script>
     <script src="/statics/js/loader.js"></script>
     <script src="/statics/js/navlist.js"></script>
+    <script src="/statics/js/gpa.js"></script>
 </body>
 </html>
