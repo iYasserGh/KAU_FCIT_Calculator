@@ -29,43 +29,73 @@
 
             <div class="p-6 space-y-4">
                 
+                <!-- Search and Select Subject -->
                 <div>
-                    <label class="block text-sm font-[400] text-neutral-400 mb-2">مقدمة حوسبة (CPIT-201)</label>
-                    <input type="text" id="cpit201" placeholder="أدخل الدرجة (مثلاً: 95)" 
-                           class="w-full bg-neutral-700 text-white p-3 rounded border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500 focus:border-neutral-400">
+                    <label class="block text-sm font-medium text-neutral-300 mb-2">اختر المادة</label>
+                    <div class="relative">
+                        <input 
+                            type="text" 
+                            id="subjectSearch" 
+                            placeholder="ابحث عن المادة..."
+                            class="w-full px-4 py-2 bg-neutral-800 border border-neutral-700 rounded text-neutral-100 focus:outline-none focus:border-green-400 transition"
+                            autocomplete="off"
+                        />
+                        <div id="subjectDropdown" class="hidden absolute z-10 w-full mt-1 bg-neutral-800 border border-neutral-700 rounded max-h-48 overflow-y-auto shadow-lg">
+                            <!-- Subjects will be loaded here -->
+                        </div>
+                    </div>
                 </div>
 
+                <!-- Grade Input -->
                 <div>
-                    <label class="block text-sm font-[400] text-neutral-400 mb-2">برمجة ١ (CPCS-202)</label>
-                    <input type="text" id="cpcs202" placeholder="أدخل الدرجة" 
-                           class="w-full bg-neutral-700 text-white p-3 rounded border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500 focus:border-neutral-400">
+                    <label class="block text-sm font-medium text-neutral-300 mb-2">الدرجة</label>
+                    <div class="relative">
+                        <select id="gradeInput" class="w-full px-4 py-2 bg-neutral-800 border border-neutral-700 rounded text-neutral-100 focus:outline-none focus:border-green-400 transition appearance-none cursor-pointer">
+                            <option value="">اختر الدرجة</option>
+                            <option value="5.0">A+</option>
+                            <option value="4.75">A</option>
+                            <option value="4.5">B+</option>
+                            <option value="4.0">B</option>
+                            <option value="3.5">C+</option>
+                            <option value="3.0">C</option>
+                            <option value="2.5">D+</option>
+                            <option value="2.0">D</option>
+                            <option value="1.0">F</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-3 text-neutral-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
 
-                <div>
-                    <label class="block text-sm font-[400] text-neutral-400 mb-2">نظرية الاحتمالات (STAT-210)</label>
-                    <input type="text" id="stat210" placeholder="أدخل الدرجة" 
-                           class="w-full bg-neutral-700 text-white p-3 rounded border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500 focus:border-neutral-400">
+                <!-- Add Subject Button -->
+                <button onclick="addSubject()" 
+                        class="w-full bg-neutral-700 hover:bg-neutral-600 text-neutral-100 font-[500] py-2 px-4 rounded shadow transition duration-300">
+                    إضافة المادة
+                </button>
+
+                <!-- Selected Subjects List -->
+                <div id="selectedSubjects" class="space-y-2 mt-4">
+                    <!-- Added subjects will appear here -->
                 </div>
 
-                <div>
-                    <label class="block text-sm font-[400] text-neutral-400 mb-2">أساليب الكتابة العلمية (CPIT-221)</label>
-                    <input type="text" id="cpit221" placeholder="أدخل الدرجة" 
-                           class="w-full bg-neutral-700 text-white p-3 rounded border border-neutral-600 input-focus transition duration-200 placeholder-neutral-500 focus:border-neutral-400">
-                </div>
-
-                <button onclick="calculateMajor()" 
-                        class="w-full mt-4 bg-green-400 hover:bg-green-500 text-neutral-950 font-[600] py-3 px-4 rounded shadow transition duration-300 transform"> <!-- hover:scale-[1.02] -->
-                    حساب المعدل
+                <!-- Calculate GPA Button -->
+                <button onclick="calculateGPA()" 
+                        class="w-full mt-4 bg-green-400 hover:bg-green-500 text-neutral-950 font-[600] py-3 px-4 rounded shadow transition duration-300 transform">
+                    حساب المعدل التراكمي
                 </button>
 
                 <div id="resultArea" class="hidden mt-6 p-4 bg-neutral-800 rounded text-center border border-neutral-600">
-                    <p class="text-neutral-300 text-sm">معدل التخصيص هو:</p>
+                    <p class="text-neutral-300 text-sm">المعدل التراكمي (GPA) هو:</p>
                     <p id="finalScore" class="text-3xl font-[600] text-green-400 mt-1">0.00</p>
-                    <p class="text-neutral-400 text-sm">ما كتبه الله لك هو خيرٌ لك دائماً</p>
+                    <p class="text-neutral-400 text-xs mt-2">مجموع الساعات: <span id="totalCredits">0</span></p>
+                    <p class="text-neutral-400 text-sm mt-2">ما كتبه الله لك هو خيرٌ لك دائماً</p>
                 </div>
                 
                 <div id="errorMsg" class="hidden mt-4 text-red-400 text-center text-sm font-[400]">
-                    الرجاء التأكد من إدخال جميع الدرجات بشكل صحيح.
+                    الرجاء إضافة مادة واحدة على الأقل
                 </div>
 
             </div>
@@ -76,7 +106,7 @@
         <p class="text-neutral-500 text-sm font-medium tracking-wide">للملاحظات والاقتراحات يرجى التواصل على <a href="https://x.com/iYasserGh" class="text-neutral-300 underline">منصة اكس</a><br>لا تنسانا من صالح دعاك</p>
     </footer>
 
-    <script src="/statics/js/script.js"></script>
+    <script src="/statics/js/gpa_calc.js"></script>
     <script src="/statics/js/loader.js"></script>
     <script src="/statics/js/navlist.js"></script>
 </body>
