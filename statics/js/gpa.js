@@ -29,11 +29,15 @@ const gradeLabels = {
 };
 
 const apiUrl = 'https://api.kstacks.org/catalog/courses?q=';
-
+const origin = 'https://kstacks.org';
 // Load subjects data
 async function loadSubjectsData(query = '') {
     try {
-        const response = await fetch(apiUrl + query);
+        const response = await fetch(apiUrl + query, {
+            headers: {
+                'Origin': origin
+            }
+        });
         const data = await response.json();
         subjectsData = data.subjects;
     } catch (error) {
