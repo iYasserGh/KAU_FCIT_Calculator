@@ -28,10 +28,12 @@ const gradeLabels = {
     'F': 'راسب'
 };
 
+const apiUrl = 'https://api.kstacks.org/catalog/courses?q=';
+
 // Load subjects data
-async function loadSubjectsData() {
+async function loadSubjectsData(query = '') {
     try {
-        const response = await fetch('/data/subjects_data.json');
+        const response = await fetch(apiUrl + query);
         const data = await response.json();
         subjectsData = data.subjects;
     } catch (error) {
@@ -41,7 +43,6 @@ async function loadSubjectsData() {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
-    loadSubjectsData();
     setupSearchEventListeners();
 });
 
@@ -51,12 +52,16 @@ function setupSearchEventListeners() {
     const searchResults = document.getElementById('searchResults');
 
     searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.trim();
-        if (query.length >= 1) {
-            searchSubjects(query);
-        } else {
-            hideSearchResults();
-        }
+        // wait for user to stop typing for 300ms before searching
+        clearTimeout(searchInput._typingTimeout);
+        searchInput._typingTimeout = setTimeout(() => {
+            const query = e.target.value.trim();
+            if (query.length >= 1) {
+                searchSubjects(query);
+            } else {
+                hideSearchResults();
+            }
+        }, 500);
     });
 
     // Hide results when clicking outside
@@ -77,13 +82,14 @@ function setupSearchEventListeners() {
 // Search subjects
 function searchSubjects(query) {
     const normalizedQuery = query.toLowerCase();
-    const results = subjectsData.filter(subject => {
-        const isAlreadySelected = selectedSubjects.some(s => s.code === subject.code);
-        if (isAlreadySelected) return false;
+    // const results = subjectsData.filter(subject => {
+    //     const isAlreadySelected = selectedSubjects.some(s => s.code === subject.code);
+    //     if (isAlreadySelected) return false;
         
-        return subject.code.toLowerCase().includes(normalizedQuery) ||
-               subject.name.includes(query);
-    }).slice(0, 10); // Limit to 10 results
+    //     return subject.code.toLowerCase().includes(normalizedQuery) ||
+    //            subject.name.includes(query);
+    // }).slice(0, 10); // Limit to 10 results
+    const results = loadSubjectsData(normalizedQuery);
 
     displaySearchResults(results);
 }
